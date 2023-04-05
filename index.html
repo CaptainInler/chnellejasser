@@ -43,7 +43,7 @@
 
     
       // Read markers data from data.csv
-  $.get('./Resultate.csv', function(csvString) {
+  L.get('./Resultate.csv', function(csvString) {
 
     // Use PapaParse to convert string to array of objects
     var data = Papa.parse(csvString, {header: true, dynamicTyping: true}).data;
