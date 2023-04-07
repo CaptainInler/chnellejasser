@@ -58,10 +58,10 @@
     for (var i in data) {
       var row = data[i];
       
-      // Break empty row's. Usually data contains a empty Object after the last regular one..
-      if(!row["Spiel Nr."]){
-        console.log(row["Spiel Nr."]);
-      break;
+      // Ignore empty row's. Usually data contains a empty Object after the last regular one..
+      if(!row["Spiel Nr."] || !row.Lat ){
+        console.log("Fehlende oder fehlerhafte Werte in Runde " + row["Spiel Nr."] + " Spiel " + row["Runde Nr."] + " Zeile " + i);
+        continue;
       }
 
       var marker = L.marker([row.Lat, row.Lon], {
