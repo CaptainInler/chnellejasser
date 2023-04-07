@@ -60,7 +60,8 @@
       
       // Ignore empty row's. Usually data contains a empty Object after the last regular one..
       if(!row["Spiel Nr."] || !row.Lat ){
-        console.log("Fehlende oder fehlerhafte Werte in Runde " + row["Spiel Nr."] + " Spiel " + row["Runde Nr."] + " Zeile " + i);
+        let rowcsv = parseInt(i) + 2
+        console.log("Fehlende oder fehlerhafte Werte in Runde " + row["Spiel Nr."] + " Spiel " + row["Runde Nr."] + " Zeile " + rowcsv);
         continue;
       }
 
