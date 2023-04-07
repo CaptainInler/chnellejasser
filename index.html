@@ -57,6 +57,12 @@
     // For each row, columns `Latitude`, `Longitude`, and `Title` are required
     for (var i in data) {
       var row = data[i];
+      
+      // Break empty row's. Usually data contains a empty Object after the last regular one..
+      if(!row["Spiel Nr."]){
+        console.log(row["Spiel Nr."]);
+      break;
+      }
 
       var marker = L.marker([row.Lat, row.Lon], {
         opacity: 1
