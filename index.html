@@ -67,7 +67,7 @@
 
       var marker = L.marker([row.Lat, row.Lon], {
         opacity: 1
-      }).bindPopup(row.Ort);
+      }).bindPopup(content = `${row.Ort} - ${row.Datum} <br /> Banner: ${row["Banner Striche"]}-${row["Banner Punkte"]}`);
       
       marker.addTo(map);
     }
