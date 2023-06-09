@@ -64,10 +64,42 @@
         console.log("Fehlende oder fehlerhafte Werte in Runde " + row["Spiel Nr."] + " Spiel " + row["Runde Nr."] + " Zeile " + rowcsv);
         continue;
       }
+      
+      if(row["Runde Nr."] == 1){
+      	bannerst = row["Banner Striche"]
+      	bannerpt = row["Banner Punkte"]
+      	
+      	agmüllerrst = row["AGMüller Striche"]
+      	agmüllerpt = row["AGMüller Punkte"]
+      	
+      	championst = row["Champion Striche"]
+      	championpt = row["Champion Punkte"]
+      	
+      	verfolgerst = row["Verfolger Striche"]
+      	verfolgerpt = row["Verfolger Punkte"]
+      }
+      else{      
+        let previ = parseInt(i)-1;
+        bannerst = row["Banner Striche"] - data[previ]["Banner Striche"]
+      	bannerpt = row["Banner Punkte"] - data[previ]["Banner Punkte"]
+
+        agmüllerrst = row["AGMüller Striche"] - data[previ]["AGMüller Striche"]
+      	agmüllerpt = row["AGMüller Punkte"] - data[previ]["AGMüller Punkte"]
+
+        championst = row["Champion Striche"] - data[previ]["Champion Striche"]
+      	championpt = row["Champion Punkte"] - data[previ]["Champion Punkte"]
+
+        verfolgerst = row["Verfolger Striche"] - data[previ]["Verfolger Striche"]
+      	verfolgerpt = row["Verfolger Punkte"] - data[previ]["Verfolger Punkte"]
+      }
 
       var marker = L.marker([row.Lat, row.Lon], {
         opacity: 1
-      }).bindPopup(content = `${row.Ort} - ${row.Datum} <br /> Banner: ${row["Banner Striche"]}-${row["Banner Punkte"]}`);
+      }).bindPopup(content = `${row.Ort} - ${row.Datum}
+        <br /> Banner: ${bannerst}-${bannerpt}
+        <br /> AGMüller: ${agmüllerrst}-${agmüllerpt}
+        <br /> Champion: ${championst}-${championpt}
+        <br /> Verfolger: ${verfolgerst}-${verfolgerpt}`);
       
       marker.addTo(map);
     }
